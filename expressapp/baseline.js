@@ -64,10 +64,30 @@ app.get('/startups/', function (req, res) {
     res.send(startupdata);
 });
 
-app.get('/startups/:id/:name', function (req, res) {
+app.get('/startups/:id', function (req, res) {
+    var findid = function(startup){
+        if (startup.id == req.params.id) {
+            res.send(startup)
+        };
+        
+        };
 
-    // findStartup()
-    res.send(req.params);
+
+        // get the id of current startup
+
+
+        // vergleich
+
+        // return startup or 404 if not found
+        
+    
+    startupdata.forEach(findid);
+    res.send('404 not found!')
+
+
+    // loop over startup data
+    // 
+
 });
 
 app.listen(3000, function () {
