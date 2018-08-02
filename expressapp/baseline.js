@@ -82,7 +82,7 @@ app.get('/startups/:id', function (req, res) {
         
     
     startupdata.forEach(findid);
-    res.send('404 not found!')
+    res.status(404).send('Not found!')
 
 
     // loop over startup data
