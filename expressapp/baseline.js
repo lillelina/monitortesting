@@ -1,11 +1,11 @@
-// neues repository: monitor-playground in github
-// express app
+// neues repository: monitor-playground in github X
+// express appX
 
-// startups in einer globalen datenstruktur anlegen (dictionary)
-// var startups = ...
+// startups in einer globalen datenstruktur anlegen (dictionary)X
+// var startups = ...X
 
 // Startups lesen
-// - Ein GET request auf /startups liefert alle startups als Json zurrück
+// - Ein GET request auf /startups liefert alle startups als Json zurrückX
 
 // Ein Startup lesen
 // - Ein GET request auf /startups/:id liefert das jeweilige Startup mit der id zurück
@@ -23,38 +23,45 @@
 var express = require('express');
 var app = express();
 
+//Object Startup mit den Eigenschaft: id, name, email, PLZ
+
+
+var figo = {
+    id: "1",
+    name: "figo",
+    emai: "info@figo.de"
+};
+
+var Heymaker = {
+    id: "2",
+    name: "Heymaker",
+    emai: "info@Heymaker.de"
+    
+};
+
+var Sugarshape = { 
+    id: "3",
+    name: "Sugarshape",
+    emai: "info@sugarshape.de"
+};
+
+var startupdata = [];
+
+ var prepstartupdata = function(){
+     startupdata.push(figo);
+     startupdata.push(Heymaker);
+     startupdata.push(Sugarshape);
+ };
+
 
 var startups = {1 : 'Figo', 2 : 'Heymaker', 3 : 'Sugarshape' }; 
-
-var findStartup = function(id) {
-    // find the startup
-
-
-    // return startup;
-}
-
-var removeStartup = function(id) {
-
-}
-
-//app.get(endpoint, /* function die gerufen werden soll wenn ein request an die url gesendet wird/*)
 
 app.get('/', function (req, res) {
     res.send('Hello World');
 });
 
 app.get('/startups/', function (req, res) {
-    var valuelist = [];
-    
-    var keys = Object.keys(startups); // keys of startups dictionary
-    keys.forEach(function(key){
-
-        var value = startups[key];
-
-        valuelist.push(value);
-
-    });
-    res.send(valuelist);
+    res.send(startupdata);
 });
 
 app.get('/startups/:id/:name', function (req, res) {
@@ -63,4 +70,6 @@ app.get('/startups/:id/:name', function (req, res) {
     res.send(req.params);
 });
 
-app.listen(3000, function () {console.log('Listining on Port 3000...')})
+app.listen(3000, function () {
+    prepstartupdata();
+    console.log('Listining on Port 3000...')})
